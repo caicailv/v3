@@ -1,5 +1,7 @@
-<!-- 组件间传值 -->
+
 <template>
+	<slot>
+  </slot>
 	<p class="rate" @mouseout="mouseout">
 		<span class="rate_list" v-for="i in 5" @click="rateNum = i">
 			<span v-if="i < rateNum + 1">★</span>
@@ -9,8 +11,9 @@
 </template>
 <script setup>
 import { ref, watch } from 'vue';
-let { val, theme } = defineProps({
-	val: {
+let emit = defineEmits(['update:modelValue']);
+let { modelValue: val, theme } = defineProps({
+	modelValue: {
 		type: Number,
 		default: 2,
 	},
@@ -21,8 +24,7 @@ let { val, theme } = defineProps({
 });
 let rateNum = ref(val);
 watch(rateNum, (e) => {
-	console.log('e', e);
-	defineEmits();
+	emit('update:modelValue', e);
 });
 </script>
 <style scoped>
