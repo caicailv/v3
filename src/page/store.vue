@@ -20,14 +20,8 @@ let store = useStore();
 let router = useRouter();
 let count = computed(() => store.state.count);
 function addCount() {
-	// store.commit('addCount');
 	store.dispatch('asyncAdd');
 }
-console.log('store.getters.getCountTwo', store.getters);
-console.log('getstore', getStore());
-// function toPath() {
-// 	router.push('/animation');
-// }
 function changeStore() {
 	myst.nickname = Math.random();
 }
