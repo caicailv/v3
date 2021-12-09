@@ -1,6 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 // import { createRouter, createWebHashHistory } from './router/myrouter.js'
-import aJsx from './page/a.jsx'
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
@@ -26,14 +25,8 @@ const router = createRouter({
     },
     {
       path: '/render',
-      component: import('./page/render.js'),
+      component: import('./page/render'),
     },
-    {
-      path: '/jsx',
-      component: aJsx,
-    },
-    
-    
   ],
 })
 

@@ -1,7 +1,7 @@
 
 <template>
-	<slot>
-  </slot>
+	<slot></slot>
+	<div class="block"></div>
 	<p class="rate" @mouseout="mouseout">
 		<span class="rate_list" v-for="i in 5" @click="rateNum = i">
 			<span v-if="i < rateNum + 1">★</span>
@@ -23,13 +23,21 @@ let { modelValue: val, theme } = defineProps({
 	},
 });
 let rateNum = ref(val);
+
+let h = ref('20px')
 watch(rateNum, (e) => {
 	emit('update:modelValue', e);
 });
 </script>
-<style scoped>
+<style >
 .rate {
 	color: v-bind(theme);
+}
+.block{
+	height: v-bind(h);
+	width: v-bind(h);
+	background-color: red;
+	
 }
 .rate span {
 	font-size: 20px;

@@ -1,0 +1,66 @@
+import {
+  compileAndroidCode,
+  myArrFn,
+  myFn,
+  myPromise,
+  myRequest,
+} from './index'
+
+test('测试正常函数是否如预期返回值', () => {
+  expect(myFn('1', '2')).toBe('12')
+})
+
+test('测试数组中是否包含某元素', () => {
+  expect(myArrFn('1', '2')).toContain('2')
+})
+
+// test('测试函数报错的情况', () => {
+//   expect(compileAndroidCode()).toThrow()
+// })
+
+test('测试异步(回调)+对象', (done) => {
+  myRequest('3', '2', (res) => {
+    expect(res).toEqual({
+      status: true,
+      data: '32',
+    })
+    done()
+  })
+})
+
+test('测试promise', () => {
+  return myPromise(true).then((res) => {
+    expect(res).toEqual({
+      status: true,
+      data: 3,
+    })
+  })
+})
+test('测试promise catch', () => {
+  return myPromise(false).catch((res) => {
+    expect(res).toEqual({
+      status: false,
+      data: 2,
+    })
+  })
+})
+test('测试promise resolve方式', () => {
+  return expect(myPromise(true)).resolves.toEqual({
+    status: true,
+    data: 3,
+  })
+})
+
+test('测试promise reject方式', () => {
+  return expect(myPromise(false)).rejects.toEqual({
+    status: false,
+    data: 2,
+  })
+})
+
+test('测试 await async', async () => {
+  await expect(myPromise(true)).resolves.toEqual({
+    status: true,
+    data: 3,
+  })
+})

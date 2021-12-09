@@ -2,7 +2,7 @@
 import Rate from '../components/Rate.vue';
 import { useFullscreen } from '@vueuse/core';
 const { isFullscreen, enter, exit, toggle } = useFullscreen();
-function rateChange(e) {
+function rateChange(e: any) {
 	console.log('rateChange', e);
 }
 </script>
