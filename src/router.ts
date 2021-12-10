@@ -13,7 +13,8 @@ const router = createRouter({
     },
     {
       path: '/:pathMatch(.*)*',
-      component: import('./page/404.vue'),
+      // component: import('./page/404.vue'),
+      component: import('./page/index.vue'),
     },
     {
       path: '/store',
